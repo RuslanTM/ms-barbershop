@@ -1,0 +1,49 @@
+databaseChangeLog:
+- logicalFilePath: db/changelog.yaml
+- changeSet:
+    id: 1
+    author: Ruslan_Temirgali
+    changes:
+    - createTable:
+        tableName: clients
+        columns:
+        - column:
+            name: id
+            type: BIGINT
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: username
+            type: varchar(50)
+            constraints:
+              unique: true
+              nullable: false
+        - column:
+            name: password
+            type: varchar(512)
+            constraints:
+              nullable: false
+        - column:
+            name: first_name
+            type: varchar(50)
+        - column:
+            name: middle_name
+            type: varchar(50)
+        - column:
+            name: last_name
+            type: varchar(50)
+        - column:
+            name: email
+            type: varchar(50)
+        - column:
+            name: date_of_birth
+            type: date
+    - createSequence:
+        dataType:  BIGINT
+        incrementBy:  1
+        maxValue:  999999999999
+        minValue:  1
+        schemaName:  public
+        sequenceName:  seq_client_id
+        startValue:  1
